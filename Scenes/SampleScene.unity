@@ -1158,8 +1158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 886326785}
   - component: {fileID: 886326784}
-  - component: {fileID: 886326783}
-  - component: {fileID: 886326786}
+  - component: {fileID: 886326788}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1167,19 +1166,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &886326783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 886326782}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 585c54093f403af4ab232521efb27fc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  notOnObst: 1
 --- !u!114 &886326784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1207,7 +1193,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &886326786
+--- !u!114 &886326788
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1216,10 +1202,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 886326782}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f010ba5dccd8906458eddaf6fa0161d4, type: 3}
+  m_Script: {fileID: 11500000, guid: e79fd9f601d34e14c8a1c7aa185bc3d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snakelength: 0
 --- !u!1 &1612757653
 GameObject:
   m_ObjectHideFlags: 0

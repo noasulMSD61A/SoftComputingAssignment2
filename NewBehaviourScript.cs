@@ -25,5 +25,11 @@ public class NewBehaviourScript : MonoBehaviour
             Destroy(gameObject);
             GameManager.snakeLenghtdraw += 1;
         }
+
+        if (col.gameObject.tag == "enemy")
+        {
+            Destroy(gameObject);
+            GameManager.enemysnakeLenghtdraw += 1;
+        }
     }
 }

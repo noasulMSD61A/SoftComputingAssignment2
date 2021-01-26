@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public static int snakeLenghtdraw;
 
+    public static int enemysnakeLenghtdraw = 4;
+
     public static bool lvl1done = false;
 
     public bool isloaded = false;
@@ -17,14 +19,24 @@ public class GameManager : MonoBehaviour
         Singleton();
     }
 
+    public void Start()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+    }
+
     public void Update()
     {
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+
         if (lvl1done == true && isloaded==false)
         {
             SceneManager.LoadScene("Level2");
             isloaded =true;
-            
         }
+        
+
     }
 
     private void Singleton()

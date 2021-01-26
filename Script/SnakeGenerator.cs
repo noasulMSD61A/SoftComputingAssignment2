@@ -16,6 +16,9 @@ public class positionRecord
     public Vector3 Position { get => position; set => position = value; }
     public int PositionOrder { get => positionOrder; set => positionOrder = value; }
     public GameObject BreadcrumbBox { get => breadcrumbBox; set => breadcrumbBox = value; }
+    public GameObject EnemyBreadBox { get => enemyBreadBox; set => enemyBreadBox = value; }
+
+    private GameObject enemyBreadBox;
 }
 
 //---> Class
@@ -43,10 +46,10 @@ public class SnakeGenerator : MonoBehaviour
     {
 
 
-        playerBox = Instantiate(Resources.Load<GameObject>("Square"), new Vector3(0f, 0f), Quaternion.identity); // Get the sprite(Square) from the resources file in the asset folderand create an instance of it to the player box 
+        playerBox = Instantiate(Resources.Load<GameObject>("Player"), new Vector3(0f, 0f), Quaternion.identity); // Get the sprite(Square) from the resources file in the asset folderand create an instance of it to the player box 
 
 
-        breadcrumbBox = Resources.Load<GameObject>("Square"); // Get the sprite(Square) from the resources file in the asset folder and attach it to the Gameobject breadcrumb box 
+        breadcrumbBox = Resources.Load<GameObject>("Player"); // Get the sprite(Square) from the resources file in the asset folder and attach it to the Gameobject breadcrumb box 
 
         playerBox.GetComponent<SpriteRenderer>().color = Color.black; // Set the playerbox to black
 
