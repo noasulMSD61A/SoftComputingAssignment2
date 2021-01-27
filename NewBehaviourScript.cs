@@ -31,5 +31,7 @@ public class NewBehaviourScript : MonoBehaviour
             Destroy(gameObject);
             GameManager.enemysnakeLenghtdraw += 1;
         }
+
+        
     }
 }

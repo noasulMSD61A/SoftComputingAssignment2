@@ -5,32 +5,33 @@ using Pathfinding;
 
 public class EnemyMove : MonoBehaviour
 {
-
+    
     Transform target; // a transform variable to store location of our target
     Path pathToFollow; // path variable to store the path created
     Seeker seeker;
     GameObject enemytrail;
     List<positionRecord> pastposEnemy;
     int posenemyOr = 0;
-    int length = GameManager.enemysnakeLenghtdraw;
+    int enemylength = GameManager.enemysnakeLenghtdraw;
     bool first = true;
-    
+
 
     void Start()
     {
-        
+
         StartCoroutine(updateGraph());
         StartCoroutine(path());
         enemytrail = Resources.Load<GameObject>("enemyTrail");
         pastposEnemy = new List<positionRecord>();
-        
+       
 
 
     }
 
     void Update()
     {
-        enemydrawTail(GameManager.enemysnakeLenghtdraw);
+        //enemydrawTail(GameManager.enemysnakeLenghtdraw);
+        print("length" + GameManager.enemysnakeLenghtdraw);
     }
 
     IEnumerator path()
@@ -52,17 +53,21 @@ public class EnemyMove : MonoBehaviour
             {
                 while (Vector3.Distance(pos.position, positns[count]) >= 1f)//while the distance of the enemy from the position of the ai is more than 0.5f
                 {
+                    
                     pos.position = Vector3.MoveTowards(pos.position, positns[count], 1f);//move the position of the ai to the position of the enemy
-                    yield return new WaitForSeconds(0.5f);//wait 
                     savePosition();
-                    enemydrawTail(length);
+                    enemydrawTail(GameManager.enemysnakeLenghtdraw);
                     pathToFollow = seeker.StartPath(pos.position, target.position);//making sure that the ai will not follow the path back when its done by removing the path
                     yield return seeker.IsDone();//making sure that the attempt to find it is done when it is on the enemy pos
+                    yield return new WaitForSeconds(0.2f);//wait 
+
                 }
             }
             yield return null;
         }
+        
     }
+
 
     
     IEnumerator updateGraph()
@@ -107,7 +112,7 @@ public class EnemyMove : MonoBehaviour
                 pastposEnemy[snakeblocks].EnemyBreadBox = Instantiate(enemytrail, pastposEnemy[snakeblocks].Position, Quaternion.identity); // Instatiating the breadcrumb box at index tailstartIndex in the pastpositions list which is of type position record 
 
 
-                pastposEnemy[snakeblocks].EnemyBreadBox.GetComponent<SpriteRenderer>().color = Color.cyan; // Setting the colour for the insta box to yellow 
+                 // Setting the colour for the insta box to yellow 
             }
         }
 
@@ -130,7 +135,7 @@ public class EnemyMove : MonoBehaviour
             }
 
             first= false; // then swithch it off so that we don't we enter the other if statment
-            enemydrawTail(length); // And draw the tail
+            enemydrawTail(GameManager.enemysnakeLenghtdraw); // And draw the tail
 
 
 
@@ -172,7 +177,7 @@ public class EnemyMove : MonoBehaviour
         {
             print("inside save");
             currentBoxPos.EnemyBreadBox= Instantiate(enemytrail, this.transform.position, Quaternion.identity);  // if box doesnt exists instintiate a bread box  at playerbox position
-
+            
             currentBoxPos.EnemyBreadBox.GetComponent<SpriteRenderer>().sortingOrder = -1;
         }
 

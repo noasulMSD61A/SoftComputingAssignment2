@@ -20,7 +20,7 @@ public class foodGeneration : MonoBehaviour
     {
         if (collision.gameObject.tag == "obstacle")
         {
-            //Destroy(this.gameObject);
+            Destroy(food);
             notOnObst = false;
         }
     }

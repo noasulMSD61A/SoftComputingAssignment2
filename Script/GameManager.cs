@@ -7,11 +7,14 @@ public class GameManager : MonoBehaviour
 {
     public static int snakeLenghtdraw;
 
-    public static int enemysnakeLenghtdraw = 4;
+    public static int enemysnakeLenghtdraw = 3;
+
+    
 
     public static bool lvl1done = false;
-
-    public bool isloaded = false;
+    public static bool lvl2done = false;
+    public static bool isloaded = false;
+    public static bool isloaded2 = false;
 
     public static GameManager instance;
     public void Awake()
@@ -35,7 +38,13 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("Level2");
             isloaded =true;
         }
-        
+
+        if (lvl2done == true && isloaded2 == false)
+        {
+            SceneManager.LoadScene("Level3");
+            isloaded2 = true;
+        }
+
 
     }
 

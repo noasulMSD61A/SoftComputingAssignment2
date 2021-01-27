@@ -33,5 +33,12 @@ public class PlayerCollisions : MonoBehaviour
                 GameManager.lvl1done = true;
             }
         }
+        if (collision.gameObject.tag == "finishlinelvl2")
+        {
+            if (GameManager.snakeLenghtdraw >= 1)
+            {
+                GameManager.lvl2done = true;
+            }
+        }
     }
 }
