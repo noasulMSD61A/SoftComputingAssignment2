@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public static bool isloaded2 = false;
     public static bool isloaded3 = false;
     public static bool sethighscore = false;
+    
 
 
     string sceneName;
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         
+
         Scene currentScene = SceneManager.GetActiveScene();
         sceneName = currentScene.name;
     }
@@ -49,6 +51,7 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("Level2");
             isloaded =true;
             GameData.Timer = GameData.Timer;
+            
         }
 
         if (lvl2done == true && isloaded2 == false)
@@ -56,6 +59,7 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("Level3");
             isloaded2 = true;
             GameData.Timer = GameData.Timer;
+            
         }
 
         if (lvl3done == true && isloaded3 == false)
@@ -63,7 +67,8 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("EndScene");
             isloaded3 = true;
             GameData.Timer = GameData.Timer;
-            
+           
+
         }
 
 

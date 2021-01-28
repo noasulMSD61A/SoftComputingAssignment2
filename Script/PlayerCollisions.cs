@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCollisions : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     void Start()
     {
         
@@ -35,7 +36,7 @@ public class PlayerCollisions : MonoBehaviour
         }
         if (collision.gameObject.tag == "finishlinelvl2")
         {
-            if (GameManager.snakeLenghtdraw >= 1)
+            if (GameManager.snakeLenghtdraw >= 9)
             {
                 GameManager.lvl2done = true;
             }
@@ -43,7 +44,7 @@ public class PlayerCollisions : MonoBehaviour
 
         if (collision.gameObject.tag == "finishlinelvl3")
         {
-            if (GameManager.snakeLenghtdraw >= 1)
+            if (GameManager.snakeLenghtdraw >= 12)
             {
                 GameManager.lvl3done = true;
             }

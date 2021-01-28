@@ -9,6 +9,7 @@ public abstract class GameData : MonoBehaviour
     private static float _currentScore;
     private static float _highestScore;
     private static InputField _username;
+    
 
 
     // Start is called before the first frame update
@@ -17,6 +18,7 @@ public abstract class GameData : MonoBehaviour
         get { return _timer1; }
         set { _timer1 = value; }
     }
+
 
     public static InputField Username
     {

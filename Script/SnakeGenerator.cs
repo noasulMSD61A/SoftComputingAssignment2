@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class positionRecord
 {
@@ -28,6 +29,8 @@ public class positionRecord
 
 public class SnakeGenerator : MonoBehaviour
 {
+    
+    
 
     public int snakelength; // A public variable to set the size/length of the snake
 
@@ -66,6 +69,8 @@ public class SnakeGenerator : MonoBehaviour
 
     void Update()
     {
+
+        
         if (Input.anyKeyDown && !((Input.GetMouseButtonDown(0)
           || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2))) && !Input.GetKeyDown(KeyCode.X) && !Input.GetKeyDown(KeyCode.Z) && !Input.GetKeyDown(KeyCode.Space))
         {
