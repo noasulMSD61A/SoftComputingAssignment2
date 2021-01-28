@@ -33,7 +33,7 @@ public class foodGeneration : MonoBehaviour
             float randY = Mathf.Floor(Random.Range(-9f, 9f));
             bool distant = false;
 
-            foodpositionrecs = new Vector2(randX, randY);
+            foodpositionrecs = new Vector2(randX+0.5f, randY+0.5f);
 
             if (foodSpawned.Count == 0)
             {

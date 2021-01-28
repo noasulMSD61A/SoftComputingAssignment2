@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static int snakeLenghtdraw;
-    public static int enemysnakeLenghtdraw = 3;
+    public static int enemysnakeLenghtdraw = 4;
     //public static float valTimer = 0f;
     public static bool lvl1done = false;
     public static bool lvl2done = false;
@@ -16,8 +16,11 @@ public class GameManager : MonoBehaviour
     public static bool isloaded = false;
     public static bool isloaded2 = false;
     public static bool isloaded3 = false;
+    public static bool isloadedlose = false;
     public static bool sethighscore = false;
+    public static bool youlost = false;
     
+
 
 
     string sceneName;
@@ -33,6 +36,7 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+
         
 
         Scene currentScene = SceneManager.GetActiveScene();
@@ -44,6 +48,12 @@ public class GameManager : MonoBehaviour
         
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
+
+        if (youlost == true && isloadedlose==false)
+        {
+            SceneManager.LoadScene("LoseScene");
+            isloadedlose = true;
+        }
         
 
         if (lvl1done == true && isloaded==false)
@@ -94,7 +104,10 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
     }
 
-    
+    public void loadstart()
+    {
+        SceneManager.LoadScene("StartScene");
+    }
 
 
 

@@ -21,11 +21,11 @@ public class PlayerCollisions : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            print("you lost");
+            GameManager.youlost = true;
         }
         if (collision.gameObject.tag == "obstacle")
         {
-            print("you lost");
+            GameManager.youlost = true;
         }
         if (collision.gameObject.tag == "finishline")
         {
