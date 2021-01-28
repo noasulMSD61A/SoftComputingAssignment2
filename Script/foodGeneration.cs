@@ -27,7 +27,7 @@ public class foodGeneration : MonoBehaviour
 
     public void foodGenerator()
     {
-        while (foodSpawned.Count < 10)
+        while (foodSpawned.Count < 6)
         {
             float randX = Mathf.Floor(Random.Range(-9f, 9f));
             float randY = Mathf.Floor(Random.Range(-9f, 9f));

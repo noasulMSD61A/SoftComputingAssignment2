@@ -5,34 +5,45 @@ using UnityEngine.UI;
 
 public class Save : MonoBehaviour
 {
-    public new InputField name;
+
+    public InputField nametext;
     
 
     public void saveName()
     {
-        if (GameManager.lvl3done == true && GameData.Timer >PlayerPrefs.GetFloat("highscore",0))
-        {
-            PlayerPrefs.SetString("name", name.text);
-        }
+        
+            PlayerPrefs.SetString("name",nametext.text);
+            print("name is" + PlayerPrefs.GetString("name"));
+        
 
 
     }
 
+    void Start()
+    {
+        
+            saveName();
+        
+        
+    }
     void Update()
     {
         SaveTime();
-        saveName();
+        
+        
     }
 
     public void SaveTime()
     {
-        if (GameManager.lvl3done == true && GameData.Timer>PlayerPrefs.GetFloat("highscore",0))
+        if (GameManager.lvl3done == true && GameData.Timer>PlayerPrefs.GetFloat("highscore"))
         {
             PlayerPrefs.SetFloat("highscore", GameData.Timer);
-            
+            GameManager.sethighscore = true;
             
         }
     }
 
-    
+   
+
+
 }

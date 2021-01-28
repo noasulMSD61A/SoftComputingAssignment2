@@ -28,7 +28,7 @@ public class PlayerCollisions : MonoBehaviour
         }
         if (collision.gameObject.tag == "finishline")
         {
-            if (GameManager.snakeLenghtdraw >= 1)
+            if (GameManager.snakeLenghtdraw >= 6)
             {
                 GameManager.lvl1done = true;
             }

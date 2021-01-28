@@ -18,6 +18,7 @@ public class timeManager : MonoBehaviour
         StartCoroutine(timer());
     }
 
+
     
     IEnumerator timer()
     {
@@ -28,7 +29,7 @@ public class timeManager : MonoBehaviour
                 //GameManager.valTimer++;
                 valTimer = GameData.Timer++;
 
-                float minutes = valTimer / 60f;
+                float minutes = valTimer / 120f;
                 float seconds = valTimer % 60f;
 
                 textTime.text = string.Format("{0:00}:{1:00}", minutes, seconds);

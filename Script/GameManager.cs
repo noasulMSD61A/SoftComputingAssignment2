@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +16,7 @@ public class GameManager : MonoBehaviour
     public static bool isloaded = false;
     public static bool isloaded2 = false;
     public static bool isloaded3 = false;
+    public static bool sethighscore = false;
 
 
     string sceneName;
@@ -29,14 +32,17 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+        
         Scene currentScene = SceneManager.GetActiveScene();
         sceneName = currentScene.name;
     }
 
     public void Update()
     {
+        
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
+        
 
         if (lvl1done == true && isloaded==false)
         {
@@ -57,6 +63,7 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("EndScene");
             isloaded3 = true;
             GameData.Timer = GameData.Timer;
+            
         }
 
 
@@ -82,22 +89,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
     }
 
-    /*private void setTimer()
-    {
-        if (sceneName == "SampleScene" && timerReady)
-        {
-            
-            timer = GameObject.FindWithTag("timer");
-                                                                                                                // the default value for the timer is started
-            timer.GetComponent<timeManager>().started = true; // Get the timer find the component on it named timeManager(script) which is attached to the timer
-            timerReady = false;
-            print("inside timer");
-        }
-
-
-
-
-    }*/
+    
 
 
 
