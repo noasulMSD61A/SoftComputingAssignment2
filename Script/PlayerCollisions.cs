@@ -19,7 +19,7 @@ public class PlayerCollisions : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        /*if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             GameManager.youlost = true;
         }
@@ -31,7 +31,7 @@ public class PlayerCollisions : MonoBehaviour
         {
             GameManager.youlost = true;
         }
-        */
+        
 
         if (collision.gameObject.tag == "finishline")
         {

@@ -41,7 +41,7 @@ public class InstantiateEnemy : MonoBehaviour
     IEnumerator enemySnake2()
     {
         yield return new WaitForSeconds(3f);
-        Instantiate(enemy, new Vector2(-8f,8f), Quaternion.identity);
+        Instantiate(enemy, new Vector2(-9f,0f), Quaternion.identity);
 
     }
 
