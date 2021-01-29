@@ -71,7 +71,7 @@ public class SnakeGenerator : MonoBehaviour
     {
 
         
-        if (Input.anyKeyDown && !((Input.GetMouseButtonDown(0)
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) && !((Input.GetMouseButtonDown(0)
           || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2))) && !Input.GetKeyDown(KeyCode.X) && !Input.GetKeyDown(KeyCode.Z) && !Input.GetKeyDown(KeyCode.Space))
         {
             //Debug.Log("a key was pressed " + Time.time);

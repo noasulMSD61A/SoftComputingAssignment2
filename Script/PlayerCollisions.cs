@@ -19,24 +19,24 @@ public class PlayerCollisions : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        /*if (collision.gameObject.tag == "Player")
         {
             GameManager.youlost = true;
         }
         if (collision.gameObject.tag == "obstacle")
         {
             GameManager.youlost = true;
-        }
+        }*/
         if (collision.gameObject.tag == "finishline")
         {
-            if (GameManager.snakeLenghtdraw >= 6)
+            if (GameManager.snakeLenghtdraw >= 1)
             {
                 GameManager.lvl1done = true;
             }
         }
         if (collision.gameObject.tag == "finishlinelvl2")
         {
-            if (GameManager.snakeLenghtdraw >= 9)
+            if (GameManager.snakeLenghtdraw >= 1)
             {
                 GameManager.lvl2done = true;
             }
@@ -44,7 +44,7 @@ public class PlayerCollisions : MonoBehaviour
 
         if (collision.gameObject.tag == "finishlinelvl3")
         {
-            if (GameManager.snakeLenghtdraw >= 12)
+            if (GameManager.snakeLenghtdraw >= 1)
             {
                 GameManager.lvl3done = true;
             }

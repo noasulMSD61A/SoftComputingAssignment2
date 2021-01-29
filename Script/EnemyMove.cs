@@ -10,6 +10,8 @@ public class EnemyMove : MonoBehaviour
     Path pathToFollow; // path variable to store the path created
     Seeker seeker;
     GameObject enemytrail;
+    List<GameObject> seekerMode;
+    GameObject seekmode;
     List<positionRecord> pastposEnemy;
     int posenemyOr = 0;
     int enemylength = GameManager.enemysnakeLenghtdraw;
@@ -23,6 +25,7 @@ public class EnemyMove : MonoBehaviour
         StartCoroutine(path());
         enemytrail = Resources.Load<GameObject>("enemyTrail");
         pastposEnemy = new List<positionRecord>();
+        seekerMode = new List<GameObject>();
        
 
 
@@ -32,6 +35,12 @@ public class EnemyMove : MonoBehaviour
     {
         //enemydrawTail(GameManager.enemysnakeLenghtdraw);
         print("length" + GameManager.enemysnakeLenghtdraw);
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            StartCoroutine(seekerPaint());
+        }   
+        
     }
 
     IEnumerator path()
@@ -58,6 +67,7 @@ public class EnemyMove : MonoBehaviour
                     savePosition();
                     enemydrawTail(GameManager.enemysnakeLenghtdraw);
                     pathToFollow = seeker.StartPath(pos.position, target.position);//making sure that the ai will not follow the path back when its done by removing the path
+                    
                     yield return seeker.IsDone();//making sure that the attempt to find it is done when it is on the enemy pos
                     yield return new WaitForSeconds(0.2f);//wait 
 
@@ -68,7 +78,34 @@ public class EnemyMove : MonoBehaviour
         
     }
 
+    void destroySeeker()
+    {
+        foreach(GameObject t in seekerMode)
+        {
+            Destroy(t);
+        }
+    }
 
+    IEnumerator seekerPaint()
+    {
+        destroySeeker();
+        List<Vector3> seekpositns = pathToFollow.vectorPath;
+        if (seekpositns.Count == 0)
+        {
+            yield return new WaitForSeconds(2f);
+        }
+        
+        
+        for (int i = 0; i < seekpositns.Count; i++)
+        {
+
+            seekmode = Instantiate(Resources.Load<GameObject>("SeekerMode"), seekpositns[i], Quaternion.identity);
+            seekerMode.Add(seekmode);
+
+
+        }
+        yield return null;
+    }
     
     IEnumerator updateGraph()
     {
