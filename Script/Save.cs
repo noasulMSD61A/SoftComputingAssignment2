@@ -35,7 +35,7 @@ public class Save : MonoBehaviour
 
     public void SaveTime()
     {
-        if (GameManager.lvl3done == true && GameData.Timer>PlayerPrefs.GetFloat("highscore"))
+        if (GameManager.lvl3done == true && GameData.Timer<PlayerPrefs.GetFloat("highscore"))
         {
             PlayerPrefs.SetFloat("highscore", GameData.Timer);
             GameManager.sethighscore = true;

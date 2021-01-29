@@ -26,17 +26,23 @@ public class PlayerCollisions : MonoBehaviour
         if (collision.gameObject.tag == "obstacle")
         {
             GameManager.youlost = true;
-        }*/
+        }
+        if (collision.gameObject.tag == "enemy")
+        {
+            GameManager.youlost = true;
+        }
+        */
+
         if (collision.gameObject.tag == "finishline")
         {
-            if (GameManager.snakeLenghtdraw >= 1)
+            if (GameManager.snakeLenghtdraw >= 6)
             {
                 GameManager.lvl1done = true;
             }
         }
         if (collision.gameObject.tag == "finishlinelvl2")
         {
-            if (GameManager.snakeLenghtdraw >= 1)
+            if (GameManager.snakeLenghtdraw >= 9)
             {
                 GameManager.lvl2done = true;
             }
@@ -44,7 +50,7 @@ public class PlayerCollisions : MonoBehaviour
 
         if (collision.gameObject.tag == "finishlinelvl3")
         {
-            if (GameManager.snakeLenghtdraw >= 1)
+            if (GameManager.snakeLenghtdraw >= 12)
             {
                 GameManager.lvl3done = true;
             }

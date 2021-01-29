@@ -23,9 +23,9 @@ public class DisplayHighScore : MonoBehaviour
     {
         beaten();
         NameBox.text = PlayerPrefs.GetString("name");
-        ScoreCurrent.text = GameData.Timer.ToString();
+        ScoreCurrent.text = GameData.Timer.ToString() + "Seconds";
         
-        Score.text = PlayerPrefs.GetFloat("highscore").ToString();
+        Score.text = PlayerPrefs.GetFloat("highscore").ToString() + "Seconds";
     }
 
     public void beaten()

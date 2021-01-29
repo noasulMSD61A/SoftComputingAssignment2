@@ -16,6 +16,7 @@ public class EnemyMove : MonoBehaviour
     int posenemyOr = 0;
     int enemylength = GameManager.enemysnakeLenghtdraw;
     bool first = true;
+    bool pressed = true;
 
 
     void Start()
@@ -39,6 +40,7 @@ public class EnemyMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T))
         {
             StartCoroutine(seekerPaint());
+            
         }   
         
     }
@@ -86,24 +88,28 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    IEnumerator seekerPaint()
+    IEnumerator seekerPaint() // drawn instantiated objects on the vector path when t is pressed.
     {
         destroySeeker();
         List<Vector3> seekpositns = pathToFollow.vectorPath;
         if (seekpositns.Count == 0)
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(2f);//if the seeker has not yest been created wait 2 seconds 
         }
-        
         
         for (int i = 0; i < seekpositns.Count; i++)
         {
-
-            seekmode = Instantiate(Resources.Load<GameObject>("SeekerMode"), seekpositns[i], Quaternion.identity);
-            seekerMode.Add(seekmode);
-
-
+            seekmode = Instantiate(Resources.Load<GameObject>("SeekerMode"), seekpositns[i], Quaternion.identity);//instantiating game object on the list seek position which has the vector path stored in it
+            seekmode.GetComponent<SpriteRenderer>().sortingOrder = -1;//arrange snake to be on top of the instantiated game object 
+            seekerMode.Add(seekmode);//add seekmode to list seekermode
         }
+
+        if (seeker.IsDone())
+        {
+            yield return new WaitForSeconds(4f);//if the seeker is done run the method destroseeker() which removes the instantiated object
+            destroySeeker();
+        }
+
         yield return null;
     }
     
