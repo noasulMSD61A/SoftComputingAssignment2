@@ -17,8 +17,6 @@ public class timeManager : MonoBehaviour
         textTime = GetComponent<Text>();
         StartCoroutine(timer());
     }
-
-
     
     IEnumerator timer()
     {
@@ -26,25 +24,17 @@ public class timeManager : MonoBehaviour
         {
             if (started)
             {
-                //GameManager.valTimer++;
                 valTimer = GameData.Timer++;
-
                 float minutes = valTimer / 120f;
                 float seconds = valTimer % 60f;
-
                 textTime.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-
-
-                
                 yield return new WaitForSeconds(1f);
             }
             else
             {
-                
                 valTimer = 0f;
                 textTime.text = string.Format("{0:00}:{1:00}", 0f, 0f);
                 yield return null;
-
             }
 
         }

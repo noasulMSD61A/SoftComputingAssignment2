@@ -10,13 +10,6 @@ public class DisplayHighScore : MonoBehaviour
     public Text NameBox;
     public Text Score;
     public Text ScoreCurrent;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-        
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -24,7 +17,6 @@ public class DisplayHighScore : MonoBehaviour
         beaten();
         NameBox.text = PlayerPrefs.GetString("name");
         ScoreCurrent.text = GameData.Timer.ToString() + "Seconds";
-        
         Score.text = PlayerPrefs.GetFloat("highscore").ToString() + "Seconds";
     }
 

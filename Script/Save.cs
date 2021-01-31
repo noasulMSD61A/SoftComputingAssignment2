@@ -11,26 +11,16 @@ public class Save : MonoBehaviour
 
     public void saveName()
     {
-        
-            PlayerPrefs.SetString("name",nametext.text);
-            print("name is" + PlayerPrefs.GetString("name"));
-        
-
-
+        PlayerPrefs.SetString("name",nametext.text);    
     }
 
     void Start()
-    {
-        
-            saveName();
-        
-        
+    {  
+        saveName(); 
     }
     void Update()
     {
         SaveTime();
-        
-        
     }
 
     public void SaveTime()
@@ -39,11 +29,6 @@ public class Save : MonoBehaviour
         {
             PlayerPrefs.SetFloat("highscore", GameData.Timer);
             GameManager.sethighscore = true;
-            
         }
     }
-
-   
-
-
 }

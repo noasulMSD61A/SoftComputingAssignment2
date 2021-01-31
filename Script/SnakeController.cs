@@ -5,17 +5,10 @@ using UnityEngine;
 public class SnakeController : MonoBehaviour
 {
     SnakeGenerator mysnakegenerator;
-
-
-
     private void Start()
     {
         mysnakegenerator = Camera.main.GetComponent<SnakeGenerator>();
     }
-
-
-
-
 
     // Update is called once per frame
     void Update()
@@ -42,14 +35,10 @@ public class SnakeController : MonoBehaviour
         }
 
     }
-
-
     public IEnumerator automoveCoroutine()
     {
         while (true)
         {
-
-
             yield return null;
         }
 

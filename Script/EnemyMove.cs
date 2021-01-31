@@ -21,28 +21,19 @@ public class EnemyMove : MonoBehaviour
 
     void Start()
     {
-
         StartCoroutine(updateGraph());
         StartCoroutine(path());
         enemytrail = Resources.Load<GameObject>("enemyTrail");
         pastposEnemy = new List<positionRecord>();
         seekerMode = new List<GameObject>();
-       
-
-
     }
 
     void Update()
     {
-        //enemydrawTail(GameManager.enemysnakeLenghtdraw);
-        print("length" + GameManager.enemysnakeLenghtdraw);
-
         if (Input.GetKeyDown(KeyCode.T))
         {
-            StartCoroutine(seekerPaint());
-            
+            StartCoroutine(seekerPaint());  
         }   
-        
     }
 
     IEnumerator path()
@@ -64,15 +55,12 @@ public class EnemyMove : MonoBehaviour
             {
                 while (Vector3.Distance(pos.position, positns[count]) >= 1f)//while the distance of the enemy from the position of the ai is more than 0.5f
                 {
-                    
                     pos.position = Vector3.MoveTowards(pos.position, positns[count], 1f);//move the position of the ai to the position of the enemy
                     savePosition();
                     enemydrawTail(GameManager.enemysnakeLenghtdraw);
                     pathToFollow = seeker.StartPath(pos.position, target.position);//making sure that the ai will not follow the path back when its done by removing the path
-                    
                     yield return seeker.IsDone();//making sure that the attempt to find it is done when it is on the enemy pos
                     yield return new WaitForSeconds(0.2f);//wait 
-
                 }
             }
             yield return null;
@@ -87,7 +75,7 @@ public class EnemyMove : MonoBehaviour
             Destroy(t);
         }
     }
-
+    //TASK 8
     IEnumerator seekerPaint() // drawn instantiated objects on the vector path when t is pressed.
     {
         destroySeeker();
@@ -122,13 +110,12 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    void clearLastBox() // This will clear the the box at the end of the tail
+    void clearLastBox()
     {
-
         foreach (positionRecord p in pastposEnemy)
         {
 
-            Destroy(p.EnemyBreadBox); // Destroying the breadcrunbBox
+            Destroy(p.EnemyBreadBox);
         }
     }
 
@@ -136,70 +123,39 @@ public class EnemyMove : MonoBehaviour
     void enemydrawTail(int length)
     {
         clearLastBox();
-
-
-
-
-        if (pastposEnemy.Count >= length) // if the pastposition list count (the amount of elements in the list) is larger than the length of the snake
+        if (pastposEnemy.Count >= length)
         {
-
-
-            int tailStartIndex = pastposEnemy.Count - 1;  // setting the tail start box index (last breadbox box)
-            int tailEndIndex = tailStartIndex - length; // Setting the last box index (breadbox box behind head)
-
-
-
-            for (int snakeblocks = tailStartIndex; snakeblocks > tailEndIndex; snakeblocks--) // Starting at the startindex and going on until the startindex is larger than the tailEndIndex
+            int tailStartIndex = pastposEnemy.Count - 1; 
+            int tailEndIndex = tailStartIndex - length; 
+            for (int snakeblocks = tailStartIndex; snakeblocks > tailEndIndex; snakeblocks--) 
             {
-
-                pastposEnemy[snakeblocks].EnemyBreadBox = Instantiate(enemytrail, pastposEnemy[snakeblocks].Position, Quaternion.identity); // Instatiating the breadcrumb box at index tailstartIndex in the pastpositions list which is of type position record 
-
-
-                 // Setting the colour for the insta box to yellow 
+                pastposEnemy[snakeblocks].EnemyBreadBox = Instantiate(enemytrail, pastposEnemy[snakeblocks].Position, Quaternion.identity);
             }
         }
 
-
-
-        if (first) // Since the first time round the pastpositioncount will be zero we will run this method to populate pastposition
+        if (first)
         {
-
             for (int count = length; count > 0; count--)
             {
-
-
-
                 positionRecord efakeBoxPos = new positionRecord();
-                float ycoord = count; // Setting up the coordinate  to spawn the fakeboxpos
+                float ycoord = count; 
                 efakeBoxPos.Position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y); //placing the facebokx pos 
-                pastposEnemy.Add(efakeBoxPos);// adding the fakebox pos to the list
-                print("inside first run");
-
+                pastposEnemy.Add(efakeBoxPos);
             }
-
-            first= false; // then swithch it off so that we don't we enter the other if statment
-            enemydrawTail(GameManager.enemysnakeLenghtdraw); // And draw the tail
-
-
-
+            first= false; 
+            enemydrawTail(GameManager.enemysnakeLenghtdraw);
         }
-
     }
-    ///--->
-    ///-->
-    bool boxExists(Vector3 positionToCheck) // comparing postion to check with our pastPosition list
+   
+    bool boxExists(Vector3 positionToCheck) 
     {
-
-
-        foreach (positionRecord p in pastposEnemy) // traversing the pastPositions list 
+        foreach (positionRecord p in pastposEnemy)
         {
-
-            if (p.Position == positionToCheck) // if the p.postions matches the postionToCeck
+            if (p.Position == positionToCheck)
             {
-
-                if (p.EnemyBreadBox != null) // and if there is a Breadcrumbox 
+                if (p.EnemyBreadBox != null) 
                 {
-                    return true; // return true 
+                    return true;
                 }
             }
         }
@@ -210,25 +166,15 @@ public class EnemyMove : MonoBehaviour
     void savePosition()
     {
         positionRecord currentBoxPos = new positionRecord();
+        currentBoxPos.Position = this.gameObject.transform.position; 
+        posenemyOr++;  
+        currentBoxPos.PositionOrder = posenemyOr; 
 
-        currentBoxPos.Position = this.gameObject.transform.position; // currentBoxPos Postions(postion in class position record) is set equal to the playerbox position
-        posenemyOr++;  // incriment position order 
-        currentBoxPos.PositionOrder = posenemyOr; // Position order for the current boxpos is set to position order
-
-        if (!boxExists(this.gameObject.transform.position)) // boxExists our method returns True/False and is checking the playerbox.transform position and if it matches 
-                                                            //This is run if it is false so the box doesnt exists 
+        if (!boxExists(this.gameObject.transform.position))                                      
         {
-            print("inside save");
-            currentBoxPos.EnemyBreadBox= Instantiate(enemytrail, this.transform.position, Quaternion.identity);  // if box doesnt exists instintiate a bread box  at playerbox position
-            
+            currentBoxPos.EnemyBreadBox= Instantiate(enemytrail, this.transform.position, Quaternion.identity); 
             currentBoxPos.EnemyBreadBox.GetComponent<SpriteRenderer>().sortingOrder = -1;
         }
-
-        pastposEnemy.Add(currentBoxPos); // adding to the past positions
-        Debug.Log("Have made this many moves: " + pastposEnemy.Count);
-
+        pastposEnemy.Add(currentBoxPos); 
     }
-    
-
-
 }
